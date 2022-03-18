@@ -1,0 +1,59 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <style>
+        .center {
+            margin: auto;
+            width: 60%;
+            padding: 10px;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <title>Cart</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+</head>
+<body>
+<header class="center">
+    <h1> My basket</h1>
+    <div>
+        <div> Cart id : <span th:text="|${cart.id}|"> </span>  </div>
+    </div>
+
+</header>
+<div class="center">
+    <div class="container">
+        <div class="cart mt-2">
+            <u>
+                Cart details
+            </u>
+            <div class="cart-content">
+                <div> <p class="cart-elements">Cart items : <span th:text="${cartElements}"></span> </p>
+                </div>
+                <h5 class="cart-total">Total cost: <span th:text="${Sum}"></span> $</h5>
+               <button type="button" class="btn btn-primary"> <a class="text-white" th:href="@{|/cart/${cart.id}/Order|}" > Order </a></button>
+            </div>
+        </div>
+        <div class="center">
+            <p class="card-text" style="background-color:lightgray;padding:2%;color:black;">Content <i class="fa fa-shopping-cart fa-1.5x"></i></p>
+
+            <div th:each="product : ${cartItems}" >
+                <div class="container">
+                    <img th:src="${product.get().getIllustration()}" th:href="@{product/id}"  width="120" height="170" />
+                    <div class="container-product">
+                        <div class="product-name"><p th:text= "${product.get().getName()}" ></p> </div>
+                        <div class="product-description text_gray"><p th:text= "${product.get().getDescription()}"></p></div>
+                        <div class="product-price">
+                            <h5 class="price descriptionTitle">Price product: <span th:text="${product.get().getPrice()}"></span> $</h5>
+                        </div>
+                        <hr class="solid">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+</body>
+</html>

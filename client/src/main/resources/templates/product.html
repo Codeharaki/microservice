@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <style>
+        .center {
+            margin: auto;
+            width: 60%;
+            padding: 10px;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <title>Product</title>
+</head>
+<body>
+<header class="center">
+    <h1> Product details </h1>
+    <div class="itemCart cartContainer">
+        <div> Cart id : <span th:text="|${cart.id}|"> </span>  </div>
+        <div> <p class="cart-elements">Cart items : <span th:text="${cartElements}"></span> </p> </div>
+    </div>
+</header>
+<div class="center">
+    <div class="container">
+        <div class="product-container mt-1 mb-1">
+            <img class="product-illustration" th:src="${product.illustration}" width="110" height="150" />
+            <div class="product-body">
+                <div class="product-name"><p th:text="${product.name}"></p></div>
+                <p class="product-description" th:text="${product.description}"></p>
+                <div class="containerPrice">
+                    <h5 class="price descriptionTitle">Price product: <span th:text="${product.price}"></span> $</h5>
+                </div>
+                <button class="btn btn-primary" type="button" > <a class="text-white" th:href="@{|/cart/${cart.id}/product-add/${product.id}|}" >Add to cart </a></button>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+</body>
+</html>

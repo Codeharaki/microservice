@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <style>
+        .center {
+            margin: auto;
+            width: 60%;
+            padding: 10px;
+        }
+    </style>
+    <title>Microservice Client</title>
+    <meta charset="UTF-8">
+     </head>
+<body>
+<header class="text_white blue_background center">
+    <h1> Online store </h1>
+    <div class>
+        <div> <a class="Cart-id" th:href="@{|/cart/${cart.id}/detailsCart|}" >Cart id : </a> <span th:text="|${cart.id}|"> </span>  </div>
+        <div> <p class="cart-elements">Cart items : <span th:text="${cartElements}"></span> </p> </div>
+        </div>
+</header>
+<div class="center">
+    <div th:each="product : ${products}" >
+        <div class="container">
+            <img th:src="${product.illustration}" th:href="@{product/id}"  width="120" height="170" />
+            <div class="container-product">
+                <div class="product-name"><p th:text= "${product.name}" ></p> </div>
+                <div class="product-description text_gray"><p th:text= "${product.description}"></p></div>
+                <div class="product-price">
+                    <h5 class="price descriptionTitle">Price product: <span th:text="${product.price}"></span> $</h5>
+                </div>
+                <div class=" mb-1 containerButtons">
+                    <button type="button" class="Add to cart button"> <a class="text-white" th:href="@{|/cart/${cart.id}/product-add/${product.id}|}" >Add to cart </a></button>
+                    <button type="button"  class="See details button"><a class="text-white" th:href="@{|/cart/${cart.id}/product-detail/${product.id}|}" >See details</a></button>
+                </div>
+                <hr class="solid">
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

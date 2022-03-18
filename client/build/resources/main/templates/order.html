@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <style>
+        .center {
+            margin: auto;
+            width: 60%;
+            padding: 10px;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <title>Order</title>
+</head>
+<body>
+<header class="center">
+    <h1> My order</h1>
+</header>
+<div class="center">
+    <div class="cart-content">
+        <u>
+            Cart details
+        </u>
+        <h5 class="cart-total">Total cost : <span th:text="${Sum}"></span> $</h5>
+        <p class="cart-elements">Cart items : <span th:text="${SumQuantity}"></span>  </p>
+    </div>
+    <div class="container">
+        <div class="cart mt-2">
+            <div class="cart-body">
+                <p class="card-text" style="background-color:green;padding:2%;color:white;">Your order have been successfully placed </p>
+                <button type="button" class="btn btn-primary"> <a class="text-white" th:href="@{|/|}" > Continue shopping </a></button>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
